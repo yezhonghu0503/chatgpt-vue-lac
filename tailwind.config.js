@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'rg-chat': 'rgb(30,30,30)',
-        'rg-chat-border': 'rgb(27,38,42)'
+        'rg-chat': '#212223',
+        'rg-chat-border': '#151717'
       }
     }
   },
