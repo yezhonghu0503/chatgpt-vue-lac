@@ -9,13 +9,13 @@
             class="w-[50px] h-[45px]"
             src="https://blog.al2p.xyz/upload/laclogo.png"
           />
-          <div class="flex flex-col items-start ml-2">
+          <div class="flex flex-col items-start">
             <div class="text-sm font-bold">F.R.I.D.A.Y. el.ser</div>
             <div class="text-xs text-slate-400">blog.al2p.xyz</div>
           </div>
         </div>
         <div
-          class="flex justify-center rounded-[5px] text-sm items-center w-[60px] h-[25px] bg-gradient-to-r from-pink-500 to-violet-500"
+          class="flex justify-center rounded-[5px] items-start w-[60px] h-[25px] bg-gradient-to-r from-pink-500 to-violet-500"
         >
           Free
         </div>

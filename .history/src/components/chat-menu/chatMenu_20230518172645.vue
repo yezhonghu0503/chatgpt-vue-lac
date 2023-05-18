@@ -9,7 +9,7 @@
             class="w-[50px] h-[45px]"
             src="https://blog.al2p.xyz/upload/laclogo.png"
           />
-          <div class="flex flex-col items-start ml-2">
+          <div class="flex flex-col items-start">
             <div class="text-sm font-bold">F.R.I.D.A.Y. el.ser</div>
             <div class="text-xs text-slate-400">blog.al2p.xyz</div>
           </div>

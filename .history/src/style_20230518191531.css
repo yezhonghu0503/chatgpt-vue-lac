@@ -64,8 +64,8 @@ button:focus-visible {
 }
 
 textarea {
-  border: none;
-  background-color: transparent;
+  /* border: none;
+  background-color: transparent; */
   resize: none;
   overflow-y: hidden;
 }

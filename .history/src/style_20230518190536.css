@@ -67,7 +67,15 @@ textarea {
   border: none;
   background-color: transparent;
   resize: none;
+  /* 禁止用户手动调整文本框大小 */
   overflow-y: hidden;
+  /* 隐藏垂直滚动条 */
+  height: auto;
+  /* 初始高度为自适应 */
+  min-height: 100px;
+  /* 设置最小高度 */
+  max-height: 300px;
+  /* 设置最大高度 */
 }
 
 textarea[type="checkbox"]:checked,

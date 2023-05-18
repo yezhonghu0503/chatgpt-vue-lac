@@ -9,28 +9,12 @@
           >ChatGPT Session window</span
         >
       </div>
-      <div class="flex flex-col justify-end items-center w-[100%] h-[100%] p-4">
+      <div class="flex flex-col justify-center items-end w-[100%] h-[100%] p-4">
         <div class="w-[95%] bg-black">
           {{ msg }}
           <img src="" alt="" />
         </div>
-        <div
-          class="flex w-[95%] items-center justify-center rounded-[10px] h-min-12 border-[1px] border-slate-500"
-        >
-          <!-- <input class="w-[90%]" type="text" /> -->
-          <textarea
-            class="w-[90%] h-auto"
-            name=""
-            rows="1"
-            cols="30"
-            id=""
-          ></textarea>
-          <img
-            class="w-[25px] h-[25px]"
-            src="https://blog.al2p.xyz/upload/send.png"
-            alt=""
-          />
-        </div>
+        <input type="text" />
       </div>
     </div>
     <div class="w-[17vw] h-[50px] border-b-2 border-indigo-500"></div>

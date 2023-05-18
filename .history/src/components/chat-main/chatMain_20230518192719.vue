@@ -15,7 +15,7 @@
           <img src="" alt="" />
         </div>
         <div
-          class="flex w-[95%] items-center justify-center rounded-[10px] h-min-12 border-[1px] border-slate-500"
+          class="flex w-[95%] items-center justify-center rounded-[10px] h-12 border-[1px] border-slate-500"
         >
           <!-- <input class="w-[90%]" type="text" /> -->
           <textarea

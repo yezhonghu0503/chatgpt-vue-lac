@@ -67,7 +67,9 @@ textarea {
   border: none;
   background-color: transparent;
   resize: none;
+  /* 禁止用户手动调整文本框大小 */
   overflow-y: hidden;
+  /* 隐藏垂直滚动条 */
 }
 
 textarea[type="checkbox"]:checked,

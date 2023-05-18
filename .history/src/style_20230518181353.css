@@ -63,17 +63,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-textarea {
+input {
   border: none;
   background-color: transparent;
-  resize: none;
-  overflow-y: hidden;
 }
 
-textarea[type="checkbox"]:checked,
-
-textarea:focus {
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
   outline: none;
+  border: none;
   background-color: transparent;
 }
 

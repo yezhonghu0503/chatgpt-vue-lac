@@ -21,7 +21,7 @@
           <textarea
             class="w-[90%] h-auto"
             name=""
-            rows="1"
+            rows="3"
             cols="30"
             id=""
           ></textarea>

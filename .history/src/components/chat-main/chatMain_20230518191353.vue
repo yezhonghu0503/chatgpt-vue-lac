@@ -15,15 +15,15 @@
           <img src="" alt="" />
         </div>
         <div
-          class="flex w-[95%] items-center justify-center rounded-[10px] h-min-12 border-[1px] border-slate-500"
+          class="flex w-[95%] items-center justify-center rounded-[10px] h-auto border-[1px] border-slate-500"
         >
           <!-- <input class="w-[90%]" type="text" /> -->
           <textarea
-            class="w-[90%] h-auto"
-            name=""
-            rows="1"
-            cols="30"
-            id=""
+            tabindex="-1"
+            autocomplete="off"
+            class="w-[90%] h-10 hide-scroll absolute inset-0 box-border resize-none appearance-none bg-color-none px-[24px] pr-[50px] font-ali-55 text-[14px] leading-[20px] text-color-white"
+            placeholder="输入内容开始聊天（Ctrl + Enter 换行）"
+            data-v-34320eef=""
           ></textarea>
           <img
             class="w-[25px] h-[25px]"
