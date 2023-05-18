@@ -10,7 +10,7 @@
         >
       </div>
     </div>
-    <div class="w-[17vw] h-[50px] border-b-2 border-indigo-500"></div>
+    <div class="w-[17vw] h-[65px] border-b-2 border-indigo-500"></div>
   </div>
 </template>
 

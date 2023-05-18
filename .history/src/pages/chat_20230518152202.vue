@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[68vw] h-[90vh] bg-rg-chat-border rounded-[30px] flex justify-end p-4 pl-0">
+    <div class="w-[72vw] h-[90vh] bg-rg-chat-border rounded-[30px] flex justify-end p-4 pl-0">
         <chatMenu />
         <chatMain />
 

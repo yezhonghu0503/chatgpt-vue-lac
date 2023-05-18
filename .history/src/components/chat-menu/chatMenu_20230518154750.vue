@@ -1,7 +1,7 @@
 <template>
   <div class="w-[17vw] h-[100%] flex justify-center items-end p-2">
     <div
-      class="w-[100%] h-[150px] bg-rg-chat flex flex-col justify-around items-center rounded-[10px]"
+      class="w-[100%] h-[150px] bg-rg-chat flex flex-col justify-between items-center rounded-[10px]"
     >
       <div class="w-[100%] h-[75px] flex justify-between items-center p-2">
         <div class="flex items-center">
