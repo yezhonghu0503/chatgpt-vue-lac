@@ -18,7 +18,7 @@
         </div>
         <div
           class="flex w-[95%] items-center justify-center rounded-[10px] border-[1px] border-slate-500"
-          :class="trRows === 1 ? 'h-14' : trRows === 2 ? 'h-20' : 'h-24'"
+          :class="trRows === 1 ? 'h-16' : trRows === 2 ? 'h-20' : 'h-24'"
         >
           <!-- <input class="w-[90%]" type="text" /> -->
           <textarea
