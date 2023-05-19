@@ -9,21 +9,26 @@
           >ChatGPT Session window</span
         >
       </div>
-      <div class="flex flex-col justify-end items-center w-[100%] h-[100%] p-4">
+      <div
+        class="flex flex-col justify-end items-center w-[100%] h-[100%] p-4 pb-10"
+      >
         <div class="w-[95%] bg-black">
-          {{ msg }}
+          {{ text }}
           <img src="" alt="" />
         </div>
         <div
-          class="flex w-[95%] items-center justify-center rounded-[10px] h-min-12 border-[1px] border-slate-500"
+          class="flex w-[95%] items-center justify-center rounded-[10px] border-[1px] border-slate-500"
+          :class="trRows === 1 ? 'h-16' : trRows === 2 ? 'h-20' : 'h-24'"
         >
           <!-- <input class="w-[90%]" type="text" /> -->
           <textarea
+            ref="tr"
             class="w-[90%] h-auto"
-            name=""
-            rows="1"
+            :rows="trRows"
             cols="30"
-            id=""
+            v-model="text"
+            @input="handelInput"
+            placeholder="输入内容开始聊天"
           ></textarea>
           <img
             class="w-[25px] h-[25px]"
@@ -38,5 +43,26 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, Ref } from "vue";
+
 const msg: string = "一些回答";
+const text: string | Ref = ref("");
+let trRows: number = 1;
+const tr: Ref = ref(null);
+
+const handelInput = () => {
+  const textarea = tr.value;
+  const lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
+  const rows = parseInt(textarea.getAttribute("rows"));
+  const totalHeight = lineHeight * rows;
+  textarea.style.height = "auto";
+  const actualHeight = textarea.scrollHeight;
+  if (actualHeight > totalHeight) {
+    trRows < 3 ? trRows++ : "";
+  }
+  if(actualHeight === totalHeight){
+    console.log(actualHeight)
+    console.log(totalHeight)
+  }
+};
 </script>
