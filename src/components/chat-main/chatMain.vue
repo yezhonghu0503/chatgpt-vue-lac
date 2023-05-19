@@ -43,7 +43,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref } from "vue";
+import { onMounted, ref, Ref } from "vue";
+import { marked } from 'marked';
+import hljs from 'highlight.js'
+// or const { marked } = require('marked');
+
+
 
 const msg: string = "一些回答";
 const text: string | Ref = ref("");
@@ -59,10 +64,30 @@ const handelInput = () => {
   const actualHeight = textarea.scrollHeight;
   if (actualHeight > totalHeight) {
     trRows < 3 ? trRows++ : "";
+    console.log(actualHeight)
+    console.log(totalHeight)
   }
-  if (actualHeight === totalHeight) {
-    console.log(actualHeight);
-    console.log(totalHeight);
-  }
+//   if (actualHeight === totalHeight) {
+//     console.log(actualHeight);
+//     console.log(totalHeight);
+//   }
 };
+
+// 格式化字符串
+// onMounted(()=>{
+//   var htmlString = marked.parse("vue3和vue2使用marked的方式基本一致，只不过vue3的setup语法要进行微调。\n\n1. 在vue项目中安装marked：`npm install marked`\n\n2. 在需要使用marked的组件中引入marked：`import marked from 'marked'`\n\n3. 在组件的setup方法中，使用marked将markdown文本转化为html：\n\n```javascript\nimport marked from 'marked'\n\nexport default {\n  name: 'Markdown',\n  props: ['text'],\n  setup(props) {\n    const html = marked(props.text)\n    return { html }\n  }\n}\n```\n\n4. 在模板中使用html渲染markdown内容：\n\n```html\n<template>\n  <div v-html=\"html\"></div>\n</template>\n```")
+//   const html = hljs.highlightAuto(htmlString).value;
+//   console.log(html)
+//   function printHTML(str:string) {
+//             var index = 0;
+//             var intervalId = setInterval(function () {
+//                 document.write(str.charAt(index));
+//                 index++;
+//                 if (index === str.length) {
+//                     clearInterval(intervalId);
+//                 }
+//             }, 50);
+//         }
+//         printHTML(html);
+// })
 </script>
