@@ -15,7 +15,7 @@
         <div class="w-[95%] h-[70vh] text-start p-4 pl-0 overflow-auto">
           {{ text }}
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
+            class="w-[80%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
           >
             <div class="" v-html="htmlString"></div>
             <img
@@ -24,11 +24,11 @@
             />
           </div>
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 ml-20 rounded-[20px] mb-6 p-6 pb-16"
+            class="bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
           >
             <div class="" v-html="htmlString"></div>
             <img
-              class="w-[70px] h-[60px] relative bottom-[-90px] left-[21vw]"
+              class="w-[70px] h-[60px] relative bottom-[-90px] left-[24vw]"
               src="https://blog.al2p.xyz/upload/laclogo.png"
             />
           </div>

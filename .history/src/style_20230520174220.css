@@ -103,14 +103,13 @@ textarea:focus {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
   height: 10px;
-  display: none;
   /* 滚动条的宽度 / height: 10px; / 滚动条的高度 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444444;
+  background: #8b8b8b;
   border-radius: 5px;
   /* 滚动条滑块的背景颜色 / border-radius: 5px; / 滚动条滑块的圆角 */
 }

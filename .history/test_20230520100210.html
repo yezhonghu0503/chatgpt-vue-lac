@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/go.min.js"></script>
+</head>
+
+<body>
+
+    <span class="hljs-tag">&lt;<span
+            class="hljs-name">p</span>&gt;</span>vue3和vue2使用marked的方式基本一致，只不过vue3的setup语法要进行微调。<span
+        class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span
+            class="hljs-name">p</span>&gt;</span>在vue项目中安装marked：<span class="hljs-tag">&lt;<span
+            class="hljs-name">code</span>&gt;</span>npm install marked<span class="hljs-tag">&lt;/<span
+            class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span
+            class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span
+            class="hljs-name">p</span>&gt;</span>在需要使用marked的组件中引入marked：<span class="hljs-tag">&lt;<span
+            class="hljs-name">code</span>&gt;</span>import marked from <span
+        class="hljs-symbol">&amp;#39;</span>marked<span class="hljs-symbol">&amp;#39;</span><span
+        class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span
+            class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span
+            class="hljs-name">p</span>&gt;</span>在组件的setup方法中，使用marked将markdown文本转化为html：<span
+        class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span
+            class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span
+            class="hljs-string">&quot;language-javascript&quot;</span>&gt;</span>import marked from <span
+        class="hljs-symbol">&amp;#39;</span>marked<span class="hljs-symbol">&amp;#39;</span>
+
+    export default {
+    name: <span class="hljs-symbol">&amp;#39;</span>Markdown<span class="hljs-symbol">&amp;#39;</span>,
+    props: [<span class="hljs-symbol">&amp;#39;</span>text<span class="hljs-symbol">&amp;#39;</span>],
+    setup(props) {
+    const html = marked(props.text)
+    return { html }
+    }
+    }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span
+            class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">start</span>=<span
+            class="hljs-string">&quot;4&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>在模板中使用html渲染markdown内容：<span
+        class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span
+            class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span
+            class="hljs-string">&quot;language-html&quot;</span>&gt;</span><span
+        class="hljs-symbol">&amp;lt;</span>template<span class="hljs-symbol">&amp;gt;</span>
+    <span class="hljs-symbol">&amp;lt;</span>div v-html=<span class="hljs-symbol">&amp;quot;</span>html<span
+        class="hljs-symbol">&amp;quot;</span><span class="hljs-symbol">&amp;gt;</span><span
+        class="hljs-symbol">&amp;lt;</span>/div<span class="hljs-symbol">&amp;gt;</span>
+    <span class="hljs-symbol">&amp;lt;</span>/template<span class="hljs-symbol">&amp;gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span
+            class="hljs-name">pre</span>&gt;</span>
+</body>
+
+</html>

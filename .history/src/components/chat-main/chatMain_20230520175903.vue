@@ -24,7 +24,7 @@
             />
           </div>
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 ml-20 rounded-[20px] mb-6 p-6 pb-16"
+            class="w-[90%] bg-rg-chat-border text-stone-300 ml-16 rounded-[20px] mb-6 p-6 pb-16"
           >
             <div class="" v-html="htmlString"></div>
             <img

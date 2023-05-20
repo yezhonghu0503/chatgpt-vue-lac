@@ -12,26 +12,18 @@
       <div
         class="flex flex-col justify-end items-center w-[100%] h-[100%] p-4 pb-10"
       >
-        <div class="w-[95%] h-[70vh] text-start p-4 pl-0 overflow-auto">
+        <div class="w-[95%] h-[70vh] text-start p-2 overflow-auto">
           {{ text }}
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
-          >
-            <div class="" v-html="htmlString"></div>
-            <img
-              class="w-[70px] h-[60px] relative bottom-[-90px]"
-              src="https://blog.al2p.xyz/upload/laclogo.png"
-            />
-          </div>
+            class="bg-rg-chat-border text-stone-300 rounded-[20px] p-6 pb-16"
+            v-html="htmlString"
+          ></div>
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 ml-20 rounded-[20px] mb-6 p-6 pb-16"
-          >
-            <div class="" v-html="htmlString"></div>
-            <img
-              class="w-[70px] h-[60px] relative bottom-[-90px] left-[21vw]"
-              src="https://blog.al2p.xyz/upload/laclogo.png"
-            />
-          </div>
+            class="bg-rg-chat-border text-stone-300 rounded-[20px] p-6 pb-16"
+            v-html="htmlString"
+          ></div>
+
+          <img src="" alt="" />
         </div>
         <div
           class="flex w-[95%] items-center justify-center rounded-[10px] border-[1px] border-slate-500"

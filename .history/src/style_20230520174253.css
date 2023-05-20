@@ -103,9 +103,8 @@ textarea:focus {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
   height: 10px;
-  display: none;
   /* 滚动条的宽度 / height: 10px; / 滚动条的高度 */
 }
 
