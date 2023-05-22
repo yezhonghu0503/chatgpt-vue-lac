@@ -17,7 +17,7 @@
           <div
             class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
           >
-            <div class="" v-html="state.html"></div>
+            <div class="" v-html="htmlString"></div>
             <img
               class="w-[70px] h-[60px] relative bottom-[-90px]"
               src="https://blog.al2p.xyz/upload/laclogo.png"
@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, Ref, computed, reactive } from "vue";
+import { onMounted, ref, Ref, computed } from "vue";
 import { marked } from "marked";
 import highlightjs from "highlight.js";
 // or const { marked } = require('marked');
@@ -93,7 +93,7 @@ const handelInput = () => {
 
 // 格式化字符串
 // onMounted(() => {
-var htmlString: any = marked.parse(
+var htmlString = marked.parse(
   "vue3和vue2使用marked的方式基本一致，只不过vue3的setup语法要进行微调。\n\n1. 在vue项目中安装marked：`npm install marked`\n\n2. 在需要使用marked的组件中引入marked：`import marked from 'marked'`\n\n3. 在组件的setup方法中，使用marked将markdown文本转化为html：\n\n```javascript\nimport marked from 'marked'\n\nexport default {\n  name: 'Markdown',\n  props: ['text'],\n  setup(props) {\n    const html = marked(props.text)\n    return { html }\n  }\n}\n```\n\n4. 在模板中使用html渲染markdown内容：\n\n```html\n<template>\n  <div v-html=\"html\"></div>\n</template>\n```"
 );
 onMounted(() => {
@@ -114,16 +114,12 @@ onMounted(() => {
 });
 
 const getOutput = () => {
-  // htmlRendering(htmltemp.value);
-  // setTimeout(() => {
-  changeHtml();
-  // }, 2000);
   // const tempstr: any =
   //   htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText;
   // let i = 0;
   // let timer: any = null;
   // htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText = "";
-  // console.log(htmltemp);
+  console.log(htmltemp);
   // timer = setInterval(() => {
   //   htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText +=
   //     tempstr.charAt(i);
@@ -133,30 +129,13 @@ const getOutput = () => {
   //   }
   // }, 50);
 };
-async function syncSetInterval(ms: number) {
-  await new Promise((resolve) => setInterval(resolve, ms));
-}
-const arrayd: any = [];
-const htmlRendering = (html: any) => {
-  if (html.children.length > 0) {
-    Array.from(html.children).forEach((item: any) => {
-      htmlRendering(item);
+const htmlRendering = (html: any): void => {
+  console.log(html.children);
+  if (html.children.length >= 0) {
+    html.children.forEach((element: any) => {
+      // htmlRendering(element);
     });
+    console.log(html.children.length);
   }
-  if (html.children.length === 0) {
-    arrayd.push(html.outerHTML);
-  }
-  // console.log(html.innerHTML);
-};
-console.log(htmltemp);
-const state = reactive({
-  html: "",
-});
-const changeHtml = () => {
-  const temp = htmlString;
-  let i = 0;
-
-  state.html += temp.charAt(i);
-  i++;
 };
 </script>

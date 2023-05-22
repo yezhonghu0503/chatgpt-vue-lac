@@ -136,7 +136,6 @@ const getOutput = () => {
 async function syncSetInterval(ms: number) {
   await new Promise((resolve) => setInterval(resolve, ms));
 }
-const arrayd: any = [];
 const htmlRendering = (html: any) => {
   if (html.children.length > 0) {
     Array.from(html.children).forEach((item: any) => {
@@ -144,19 +143,19 @@ const htmlRendering = (html: any) => {
     });
   }
   if (html.children.length === 0) {
-    arrayd.push(html.outerHTML);
+    console.log(typeof html);
   }
   // console.log(html.innerHTML);
 };
-console.log(htmltemp);
 const state = reactive({
   html: "",
 });
 const changeHtml = () => {
   const temp = htmlString;
   let i = 0;
-
-  state.html += temp.charAt(i);
-  i++;
+  setInterval(() => {
+    state.html += temp.charAt(i);
+    i++;
+  });
 };
 </script>

@@ -155,8 +155,14 @@ const state = reactive({
 const changeHtml = () => {
   const temp = htmlString;
   let i = 0;
-
-  state.html += temp.charAt(i);
-  i++;
+  let j = 0;
+  setInterval(() => {
+    state.html += arrayd[j].charAt(i);
+    i++;
+    if (i > arrayd[j].length - 1) {
+      i = 0;
+      j++;
+    }
+  }, 100);
 };
 </script>

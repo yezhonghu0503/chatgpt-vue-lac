@@ -17,7 +17,7 @@
           <div
             class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
           >
-            <div class="" v-html="state.html"></div>
+            <div class="" v-html="state.html" v-if="showContent"></div>
             <img
               class="w-[70px] h-[60px] relative bottom-[-90px]"
               src="https://blog.al2p.xyz/upload/laclogo.png"
@@ -110,7 +110,7 @@ onMounted(() => {
   //   }
   // }, 50);
   // console.log(htmltemp.value.childNodes[0].innerText = '');
-  htmlRendering(htmltemp.value);
+  // htmlRendering(htmltemp.value);
 });
 
 const getOutput = () => {
@@ -136,7 +136,6 @@ const getOutput = () => {
 async function syncSetInterval(ms: number) {
   await new Promise((resolve) => setInterval(resolve, ms));
 }
-const arrayd: any = [];
 const htmlRendering = (html: any) => {
   if (html.children.length > 0) {
     Array.from(html.children).forEach((item: any) => {
@@ -144,19 +143,19 @@ const htmlRendering = (html: any) => {
     });
   }
   if (html.children.length === 0) {
-    arrayd.push(html.outerHTML);
+    // console.log(html);
   }
   // console.log(html.innerHTML);
 };
-console.log(htmltemp);
 const state = reactive({
   html: "",
 });
 const changeHtml = () => {
   const temp = htmlString;
   let i = 0;
-
-  state.html += temp.charAt(i);
-  i++;
+  setInterval(() => {
+    state.html += temp.charAt(i);
+    i++;
+  });
 };
 </script>

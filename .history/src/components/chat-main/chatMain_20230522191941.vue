@@ -144,19 +144,22 @@ const htmlRendering = (html: any) => {
     });
   }
   if (html.children.length === 0) {
-    arrayd.push(html.outerHTML);
+    arrayd.push(html.innerHTML);
+    console.log(html.innerHTML);
   }
   // console.log(html.innerHTML);
 };
-console.log(htmltemp);
 const state = reactive({
   html: "",
 });
 const changeHtml = () => {
   const temp = htmlString;
   let i = 0;
-
-  state.html += temp.charAt(i);
-  i++;
+  arrayd.forEach((item: any) => {
+    setInterval(() => {
+      state.html += item.charAt(i);
+      i++;
+    });
+  });
 };
 </script>
