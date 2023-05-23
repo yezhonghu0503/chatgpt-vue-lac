@@ -11,12 +11,13 @@
   "dependencies": {
     "@types/marked": "^5.0.0",
     "axios": "^1.4.0",
-    "highlight.js": "^11.8.0",
     "less": "^4.1.3",
     "marked": "^5.0.2",
+    "prismjs": "^1.29.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.26.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",

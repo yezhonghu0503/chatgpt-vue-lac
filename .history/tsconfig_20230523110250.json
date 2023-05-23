@@ -15,6 +15,9 @@
     ],
     "skipLibCheck": true,
     "noEmit": true,
+    "types": [
+      "highlight.js"
+    ]
   },
   "include": [
     "src/**/*.ts",

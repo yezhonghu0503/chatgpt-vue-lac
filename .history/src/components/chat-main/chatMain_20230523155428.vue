@@ -64,6 +64,8 @@
 import { onMounted, ref, Ref, reactive, onUpdated, computed } from "vue";
 import { marked } from "marked";
 import Prism from "prismjs";
+// import "prismjs/components/prism-typescript";
+// import "prismjs/components/prism-json";
 import "prismjs/themes/prism-okaidia.css";
 
 const msg: string = "一些回答";
@@ -84,24 +86,85 @@ const handelInput = () => {
     console.log(actualHeight);
     console.log(totalHeight);
   }
+  //   if (actualHeight === totalHeight) {
+  //     console.log(actualHeight);
+  //     console.log(totalHeight);
+  //   }
 };
-onUpdated(() => {
-  Prism.highlightAll();
-}),
-  onMounted(() => {});
 
-const getOutput = () => {
-  changeHtml(htmlString);
-};
-async function syncSetInterval(ms: number) {
-  await new Promise((resolve) => setInterval(resolve, ms));
-}
-
+// 格式化字符串
+// onMounted(() => {
 const props = reactive({
   content:
     "vue3和vue2使用marked的方式基本一致，只不过vue3的setup语法要进行微调。\n\n1. 在vue项目中安装marked：`npm install marked`\n\n2. 在需要使用marked的组件中引入marked：`import marked from 'marked'`\n\n3. 在组件的setup方法中，使用marked将markdown文本转化为html：\n\n```javascript\nimport marked from 'marked'\n\nexport default {\n  name: 'Markdown',\n  props: ['text'],\n  setup(props) {\n    const html = marked(props.text)\n    return { html }\n  }\n}\n```\n\n4. 在模板中使用html渲染markdown内容：\n\n```html\n<template>\n  <div v-html=\"html\"></div>\n</template>\n```",
 });
+// var htmlString: any = computed(() => {
+//   return marked.parse(props.content);
+// });
 const htmlString: any = `${marked.parse(props.content)}`;
+onUpdated(() => {
+  Prism.highlightAll();
+}),
+  onMounted(() => {
+    // const tempstr: any = htmltemp.value.childNodes[4].childNodes[0].innerText;
+    // let i = 0;
+    // let timer: any = null;
+    // htmltemp.value.childNodes[4].childNodes[0].innerText = "";
+    // console.log(htmltemp.value.childNodes[4].childNodes[0]);
+    // timer = setInterval(() => {
+    //   htmltemp.value.childNodes[4].childNodes[0].innerText += tempstr.charAt(i);
+    //   i++;
+    //   if (i === tempstr.length) {
+    //     clearInterval(timer);
+    //   }
+    // }, 50);
+    // console.log(htmltemp.value.childNodes[0].innerText = '');
+    // htmlRendering(htmltemp.value);
+  });
+
+const getOutput = () => {
+  // htmlRendering(htmltemp.value);
+  // setTimeout(() => {
+  changeHtml(htmlString);
+  // }, 2000);
+  // const tempstr: any =
+  //   htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText;
+  // let i = 0;
+  // let timer: any = null;
+  // htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText = "";
+  // console.log(htmltemp);
+  // timer = setInterval(() => {
+  //   htmltemp.value.childNodes[4].childNodes[0].childNodes[0].innerText +=
+  //     tempstr.charAt(i);
+  //   i++;
+  //   if (i === tempstr.length) {
+  //     clearInterval(timer);
+  //   }
+  // }, 50);
+};
+async function syncSetInterval(ms: number) {
+  await new Promise((resolve) => setInterval(resolve, ms));
+}
+const arrayd: any = [];
+const htmlRendering = async (html: any) => {
+  if (html.children.length > 0) {
+    Array.from(html.children).forEach((item: any) => {
+      htmlRendering(item);
+    });
+  }
+  if (html.children.length === 0) {
+    console.log(html.innerText);
+    const temp = html.innerText;
+    html.innerText = "";
+    // for (let index = 0; index < temp.length; index++) {
+    //   html.innerText += temp.charAt(index);
+    //   await syncSetInterval(50);
+    // }
+  }
+  await syncSetInterval(50);
+};
+console.log(htmltemp);
+
 // 方案一:响应式数据+v-html
 const state = reactive({
   html: "",
@@ -111,13 +174,12 @@ const changeHtml = (htmlString: string): void => {
   let i = 0;
   let timer: number = 0;
   timer = setInterval(() => {
-    state.html += temp.charAt(i) + temp.charAt(i + 1);
-
-    i += 2;
+    state.html += temp.charAt(i) + temp.charAt(i + 1) + temp.charAt(i + 2);
+    i += 3;
     if (temp.length <= i) {
       clearInterval(timer);
     }
-  });
+  }, 50);
 };
 
 const renderHTML = computed(() => {
