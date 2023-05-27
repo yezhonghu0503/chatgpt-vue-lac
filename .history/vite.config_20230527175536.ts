@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      "/chat": {
-        target: "http://43.134.90.37:8999",
+      "/api": {
+        target: "http://localhost:3001",
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
