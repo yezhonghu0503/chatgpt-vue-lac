@@ -63,6 +63,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, Ref, reactive, onUpdated, computed } from "vue";
 import { marked } from "marked";
+import { getChatMessage } from "../../api/chatMsg";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 
@@ -92,6 +93,7 @@ onUpdated(() => {
 
 const getOutput = () => {
   changeHtml(htmlString);
+  talks()
 };
 async function syncSetInterval(ms: number) {
   await new Promise((resolve) => setInterval(resolve, ms));
@@ -117,10 +119,19 @@ const changeHtml = (htmlString: string): void => {
     if (temp.length <= i) {
       clearInterval(timer);
     }
-  });
+  },50);
 };
 
 const renderHTML = computed(() => {
   return state.html;
 });
+
+const talks = async ()=>{
+  const from = {
+    msg:'什么是chatgpt',
+    modleName:''
+  }
+  const res = await getChatMessage(from);
+  console.log(res)
+}
 </script>
