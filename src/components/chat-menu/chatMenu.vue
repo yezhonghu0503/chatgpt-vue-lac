@@ -21,6 +21,7 @@
         </div>
       </div>
       <div
+      @click="getToken"
         class="text-sm flex items-center justify-center w-[13vw] h-[40px] rounded-[10px] border-2 border-indigo-500 font-bold"
       >
         update for pro
@@ -29,6 +30,15 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import {login} from '../../api/login'
+const getToken = async ()=>{
+  const loginFrom = {
+    passphrase:'hugiegie'
+  }
+  const res = await login(loginFrom);
+  console.log(res)
+}
+</script>
 
 <style lang="less" scoped></style>

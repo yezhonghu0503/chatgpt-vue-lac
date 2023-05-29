@@ -101,7 +101,7 @@ async function syncSetInterval(ms: number) {
 
 const props = reactive({
   content:
-    "vue3和vue2使用marked的方式基本一致，只不过vue3的setup语法要进行微调。\n\n1. 在vue项目中安装marked：`npm install marked`\n\n2. 在需要使用marked的组件中引入marked：`import marked from 'marked'`\n\n3. 在组件的setup方法中，使用marked将markdown文本转化为html：\n\n```javascript\nimport marked from 'marked'\n\nexport default {\n  name: 'Markdown',\n  props: ['text'],\n  setup(props) {\n    const html = marked(props.text)\n    return { html }\n  }\n}\n```\n\n4. 在模板中使用html渲染markdown内容：\n\n```html\n<template>\n  <div v-html=\"html\"></div>\n</template>\n```",
+    "在使用axios进行网络请求时，可以通过使用axios.interceptors.request.use()方法设置请求拦截器，对请求进行一些处理或修改。\n\n请求拦截器可以在发送请求前对请求进行一些公共的处理，例如在每个请求中添加一些固定的请求头信息、对请求参数进行加密等。具体实现如下：\n\n```javascript\n// 创建一个axios实例\nconst axiosInstance = axios.create({\n  // ...\n});\n\n// 在请求拦截器中设置请求头信息\naxiosInstance.interceptors.request.use(\n  config => {\n    // 在请求头中添加token\n    const token = localStorage.getItem('token');\n    if (token) {\n      config.headers['Authorization'] = token;\n    }\n    return config;\n  },\n  error => {\n    return Promise.reject(error);\n  }\n);\n\n// 发起网络请求\naxiosInstance.get('/api/userInfo')\n  .then(res => {\n    console.log(res);\n  })\n  .catch(err => {\n    console.log(err);\n  });\n```\n\n在请求拦截器中，config对象包含了当前请求的配置信息，可以对其进行修改并返回，也可以直接返回一个Promise实例，将被拒绝的错误信息传递给catch函数。如果请求发生错误，将不会进入响应拦截器。",
 });
 const htmlString: any = `${marked.parse(props.content)}`;
 // 方案一:响应式数据+v-html
