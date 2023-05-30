@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+const axiosInstance = axios.create({});
+
+const instance = axios.create({
   timeout: 2000,
   headers: { 'X-Custom-Header': 'foobar' }
 });

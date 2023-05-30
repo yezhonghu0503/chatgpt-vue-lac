@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
-  timeout: 2000,
-  headers: { 'X-Custom-Header': 'foobar' }
-});
+const axiosInstance = axios.create({});
 
 axiosInstance.interceptors.request.use(
   (config: any) => {
