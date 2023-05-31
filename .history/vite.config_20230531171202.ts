@@ -6,12 +6,9 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': './src'
-    }
-    // {
-    //   find: '@',
-    //   replacement: resolve(__dirname, '../src'),
-    // }
+      '@': '/src',
+      // 添加其他路径别名
+    },
   }
   // server: {
   //   proxy: {

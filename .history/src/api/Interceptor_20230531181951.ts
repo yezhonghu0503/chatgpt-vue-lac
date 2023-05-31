@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+console.log('bbb')
 // 添加请求拦截器
 axios.interceptors.request.use(
   (config: any) => {

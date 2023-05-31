@@ -7,9 +7,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import chatMain from "../components/chat-main/chatMain.vue";
-// import chatMain from "@/components/chat-main/chatMain";
-import chatMenu from "../components/chat-menu/chatMenu.vue";
+// import chatMain from "../components/chat-main/chatMain.vue";
+import chatMain from "@/components/chat-main/chatMain";
+import chatMenu from "@/components/chat-menu/chatMenu";
 </script>
 
 <style lang="less" scoped></style>

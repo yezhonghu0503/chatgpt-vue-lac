@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import './api/interceptor'
+import '@/api/interceptor.ts'
 
 const app = createApp(App)
 // app.directive('chathtml', {
