@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-loading.fullscreen.lock="fullscreenLoading"
-    :element-loading-svg="svg"
-    element-loading-svg-view-box="-10, -10, 50, 50"
-    class="w-[17vw] h-[100%] flex justify-center items-end p-2 custom-loading-svg"
-  >
+  <div class="w-[17vw] h-[100%] flex justify-center items-end p-2">
     <div
       class="w-[100%] h-[150px] bg-rg-chat flex flex-col justify-around items-center rounded-[10px]"
     >
@@ -26,10 +21,10 @@
         </div>
       </div>
       <el-button
-        class="w-[13vw] h-[40px] rounded-[10px] border-2 font-bold"
+        class="w-[13vw] h-[40px] rounded-[10px] border-2 border-emerald-400 font-bold"
         text
         @click="open"
-        >Start using after Auth</el-button
+        >Click to open Message Box</el-button
       >
       <!-- <div
       @click="getToken"
@@ -42,52 +37,34 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import { login } from "../../api/login";
 import { ElMessage, ElMessageBox } from "element-plus";
-
-const svg = `
-        <path class="path" d="
-          M 30 15
-          L 28 17
-          M 25.61 25.61
-          A 15 15, 0, 0, 1, 15 30
-          A 15 15, 0, 1, 1, 27.99 7.5
-          L 15 15
-        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
-      `;
-const fullscreenLoading = ref(false);
-
-const getToken = async (passphrase: string) => {
+const getToken = async () => {
   const loginFrom = {
-    passphrase: passphrase,
+    passphrase: "hugiegie",
   };
   const res = await login(loginFrom);
-  res.data.token ? localStorage.setItem("token", res.data.token) : "";
-  ElMessage({
-    type: res.data.status === 200 ? "success" : "error",
-    message: `${res.data.message}`,
-  });
-  fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
+  console.log(res);
 };
 
 const open = () => {
-  ElMessageBox.prompt("请输入鉴权信息，以获取使用权限", "提示", {
-    confirmButtonText: "确认",
-    cancelButtonText: "取消",
-    // inputPattern:
-    //   /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-    inputErrorMessage: "请输入鉴权信息",
+  ElMessageBox.prompt("Please input your e-mail", "Tip", {
+    confirmButtonText: "OK",
+    cancelButtonText: "Cancel",
+    inputPattern:
+      /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+    inputErrorMessage: "Invalid Email",
   })
     .then(({ value }) => {
-      fullscreenLoading.value = true;
-      getToken(value);
+      ElMessage({
+        type: "success",
+        message: `Your email is:${value}`,
+      });
     })
     .catch(() => {
       ElMessage({
         type: "info",
-        message: "已经取消",
+        message: "Input canceled",
       });
     });
 };

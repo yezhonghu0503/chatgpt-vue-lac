@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-loading.fullscreen.lock="fullscreenLoading"
-    :element-loading-svg="svg"
-    element-loading-svg-view-box="-10, -10, 50, 50"
-    class="w-[17vw] h-[100%] flex justify-center items-end p-2 custom-loading-svg"
-  >
+  <div class="w-[17vw] h-[100%] flex justify-center items-end p-2">
     <div
       class="w-[100%] h-[150px] bg-rg-chat flex flex-col justify-around items-center rounded-[10px]"
     >
@@ -42,34 +37,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import { login } from "../../api/login";
 import { ElMessage, ElMessageBox } from "element-plus";
-
-const svg = `
-        <path class="path" d="
-          M 30 15
-          L 28 17
-          M 25.61 25.61
-          A 15 15, 0, 0, 1, 15 30
-          A 15 15, 0, 1, 1, 27.99 7.5
-          L 15 15
-        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
-      `;
-const fullscreenLoading = ref(false);
-
 const getToken = async (passphrase: string) => {
   const loginFrom = {
     passphrase: passphrase,
   };
   const res = await login(loginFrom);
-  res.data.token ? localStorage.setItem("token", res.data.token) : "";
+  console.log(res);
   ElMessage({
-    type: res.data.status === 200 ? "success" : "error",
-    message: `${res.data.message}`,
+    type: "success",
+    message: `鉴权成功！`,
   });
-  fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
 };
 
 const open = () => {
@@ -81,7 +60,6 @@ const open = () => {
     inputErrorMessage: "请输入鉴权信息",
   })
     .then(({ value }) => {
-      fullscreenLoading.value = true;
       getToken(value);
     })
     .catch(() => {

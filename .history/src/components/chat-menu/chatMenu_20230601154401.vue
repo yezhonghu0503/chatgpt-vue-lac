@@ -69,7 +69,6 @@ const getToken = async (passphrase: string) => {
     message: `${res.data.message}`,
   });
   fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
 };
 
 const open = () => {

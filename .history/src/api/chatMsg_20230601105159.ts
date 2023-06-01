@@ -1,5 +1,7 @@
+import axios from 'axios';
 import { chatAxios } from './index';
 
+
 export function getChatMessage(data: object) {
-    return chatAxios.post('/chat/talks', data)
+    return axios.post('/chat/talks', data)
 }

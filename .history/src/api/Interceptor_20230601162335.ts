@@ -8,7 +8,7 @@ if (localStorage.getItem('token')) {
 // 添加请求拦截器
 chatAxios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    if (!localStorage.getItem('token') && config.url !== '/api/login') {
+    if (!localStorage.getItem('token')) {
       ElMessage({
         type: 'error',
         message: '未获得鉴权，请先鉴权再使用'

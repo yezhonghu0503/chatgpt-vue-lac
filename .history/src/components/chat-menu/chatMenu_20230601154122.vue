@@ -63,13 +63,13 @@ const getToken = async (passphrase: string) => {
     passphrase: passphrase,
   };
   const res = await login(loginFrom);
-  res.data.token ? localStorage.setItem("token", res.data.token) : "";
+  console.log(res);
+
   ElMessage({
     type: res.data.status === 200 ? "success" : "error",
     message: `${res.data.message}`,
   });
   fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
 };
 
 const open = () => {

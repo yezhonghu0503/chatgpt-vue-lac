@@ -1,6 +1,6 @@
 <template>
   <div
-    v-loading.fullscreen.lock="fullscreenLoading"
+    v-loading.fullscreen.lock=""
     :element-loading-svg="svg"
     element-loading-svg-view-box="-10, -10, 50, 50"
     class="w-[17vw] h-[100%] flex justify-center items-end p-2 custom-loading-svg"
@@ -56,20 +56,18 @@ const svg = `
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `;
-const fullscreenLoading = ref(false);
+const fullscreenLoading = ref(true);
 
 const getToken = async (passphrase: string) => {
   const loginFrom = {
     passphrase: passphrase,
   };
   const res = await login(loginFrom);
-  res.data.token ? localStorage.setItem("token", res.data.token) : "";
+  console.log(res);
   ElMessage({
-    type: res.data.status === 200 ? "success" : "error",
-    message: `${res.data.message}`,
+    type: "success",
+    message: `鉴权成功！`,
   });
-  fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
 };
 
 const open = () => {
@@ -81,7 +79,6 @@ const open = () => {
     inputErrorMessage: "请输入鉴权信息",
   })
     .then(({ value }) => {
-      fullscreenLoading.value = true;
       getToken(value);
     })
     .catch(() => {

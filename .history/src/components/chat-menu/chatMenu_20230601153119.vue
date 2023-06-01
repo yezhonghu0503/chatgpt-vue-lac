@@ -63,13 +63,11 @@ const getToken = async (passphrase: string) => {
     passphrase: passphrase,
   };
   const res = await login(loginFrom);
-  res.data.token ? localStorage.setItem("token", res.data.token) : "";
+  console.log(res);
   ElMessage({
-    type: res.data.status === 200 ? "success" : "error",
-    message: `${res.data.message}`,
+    type: "success",
+    message: `鉴权成功！`,
   });
-  fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
 };
 
 const open = () => {
@@ -81,7 +79,6 @@ const open = () => {
     inputErrorMessage: "请输入鉴权信息",
   })
     .then(({ value }) => {
-      fullscreenLoading.value = true;
       getToken(value);
     })
     .catch(() => {
