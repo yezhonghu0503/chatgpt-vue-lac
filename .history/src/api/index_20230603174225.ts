@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const chatAxios: any = axios.create({
     baseURL: 'http://43.134.90.37:8999',
-    // timeout: 10000,
+    timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': ''

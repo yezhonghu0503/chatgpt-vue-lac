@@ -101,6 +101,7 @@ async function syncSetInterval(ms: number) {
 const props = reactive({
   content: "",
 });
+const htmlString: any = `${marked.parse(props.content)}`;
 // 方案一:响应式数据+v-html
 const state = reactive({
   html: "",
@@ -122,7 +123,7 @@ const changeHtml = (htmlString: string): void => {
 const renderHTML = computed(() => {
   return state.html;
 });
-let htmlString = "";
+
 const talks = async () => {
   const from = {
     modelName: "",
@@ -137,8 +138,6 @@ const talks = async () => {
   const res = await getChatMessage(from);
   console.log(res);
   props.content = res.data.choices[0].message.content;
-  console.log(props.content);
-  const htmlString: any = `${marked.parse(props.content)}`;
   changeHtml(htmlString);
 };
 </script>

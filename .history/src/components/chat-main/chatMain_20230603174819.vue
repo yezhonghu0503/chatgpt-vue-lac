@@ -137,7 +137,6 @@ const talks = async () => {
   const res = await getChatMessage(from);
   console.log(res);
   props.content = res.data.choices[0].message.content;
-  console.log(props.content);
   const htmlString: any = `${marked.parse(props.content)}`;
   changeHtml(htmlString);
 };
