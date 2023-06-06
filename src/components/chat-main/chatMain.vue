@@ -15,23 +15,31 @@
         <div class="w-[95%] h-[70vh] text-start p-4 pl-0 overflow-auto">
           {{ text }}
           <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6 pb-16"
+            v-loading="isTakls"
+            :element-loading-svg="svg"
+            element-loading-background="rgba(122, 122, 122, 0)"
+            element-loading-svg-view-box="-10, -10, 50, 50"
+            class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6"
           >
             <div ref="htmltemp" class="" v-html="state.html"></div>
             <img
-              class="w-[70px] h-[60px] relative bottom-[-90px]"
-              src="https://blog.al2p.xyz/upload/laclogo.png"
+              class="w-[40px] h-[40px] rounded-md relative bottom-[-40px]"
+              src="https://blog.al2p.xyz/upload/logo.png"
             />
           </div>
-          <div
-            class="w-[90%] bg-rg-chat-border text-stone-300 ml-20 rounded-[20px] mb-6 p-6 pb-16"
+          <!-- <div
+            v-loading="isTakls"
+            :element-loading-svg="svg"
+            element-loading-background="rgba(122, 122, 122, 0)"
+            element-loading-svg-view-box="-10, -10, 50, 50"
+            class="w-[90%] bg-rg-chat-border text-stone-300 rounded-[20px] mb-6 p-6"
           >
-            <div ref="htmltemp" class="" v-highlight v-html="htmlString"></div>
+            <div ref="htmltemp" class="" v-html="state.html"></div>
             <img
-              class="w-[70px] h-[60px] relative bottom-[-90px] left-[21vw]"
-              src="https://blog.al2p.xyz/upload/laclogo.png"
+              class="w-[40px] h-[40px] rounded-md relative bottom-[-40px]"
+              src="https://blog.al2p.xyz/upload/logo.png"
             />
-          </div>
+          </div> -->
         </div>
         <div
           class="flex w-[95%] items-center justify-center rounded-[10px] border-[1px] border-slate-500"
@@ -67,11 +75,22 @@ import { getChatMessage } from "../../api/chatMsg";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `;
 const msg: string = "一些回答";
 const text: string | Ref = ref("");
 const htmltemp: Ref = ref(null);
 let trRows: number = 1;
 const tr: Ref = ref(null);
+let isTakls: Ref = ref(false);
 
 const handelInput = () => {
   const textarea = tr.value;
@@ -82,8 +101,6 @@ const handelInput = () => {
   const actualHeight = textarea.scrollHeight;
   if (actualHeight > totalHeight) {
     trRows < 3 ? trRows++ : "";
-    console.log(actualHeight);
-    console.log(totalHeight);
   }
 };
 onUpdated(() => {
@@ -92,6 +109,7 @@ onUpdated(() => {
   onMounted(() => {});
 
 const getOutput = () => {
+  isTakls.value = true;
   talks();
 };
 async function syncSetInterval(ms: number) {
@@ -106,6 +124,7 @@ const state = reactive({
   html: "",
 });
 const changeHtml = (htmlString: string): void => {
+  isTakls.value = false;
   const temp = htmlString;
   let i = 0;
   let timer: number = 0;
@@ -135,9 +154,7 @@ const talks = async () => {
     ],
   };
   const res = await getChatMessage(from);
-  console.log(res);
   props.content = res.data.choices[0].message.content;
-  console.log(props.content);
   const htmlString: any = `${marked.parse(props.content)}`;
   changeHtml(htmlString);
 };

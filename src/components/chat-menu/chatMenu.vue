@@ -11,8 +11,8 @@
       <div class="w-[100%] h-[75px] flex justify-between items-center p-2">
         <div class="flex items-center">
           <img
-            class="w-[50px] h-[45px]"
-            src="https://blog.al2p.xyz/upload/laclogo.png"
+            class="w-[45px] h-[45px] rounded-md"
+            src="https://blog.al2p.xyz/upload/logo.png"
           />
           <div class="flex flex-col items-start ml-2">
             <div class="text-sm font-bold">F.R.I.D.A.Y. el.ser</div>
@@ -69,7 +69,9 @@ const getToken = async (passphrase: string) => {
     message: `${res.data.message}`,
   });
   fullscreenLoading.value = false;
-  (await res.data.token) ? location.reload() : "";
+  setTimeout(()=>{
+    res.data.token ? location.reload() : "";
+  },2000)
 };
 
 const open = () => {

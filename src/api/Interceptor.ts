@@ -1,5 +1,5 @@
-import { AxiosRequestConfig } from 'axios';
-import { chatAxios } from './index';
+import { AxiosRequestConfig } from 'axios'
+import { chatAxios } from './index'
 import { ElMessage } from 'element-plus'
 
 if (localStorage.getItem('token')) {
